@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+    <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+    <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
+
+    <meta charset="UTF-8">
+    <title>E-Carnet</title>
+
+</head>
+<style>
+    .centerapp {
+        display: flex;
+        justify-content: center;
+        align-self: center;
+    }
+
+    .top-right {
+        position: absolute;
+        top: 4px;
+        right: 0px;
+    }
+</style>
+
+<body>
+
+
+<ons-page>
+    <ons-tabbar swipeable position="auto" id="tabbar">
+        <ons-tab page="tab1.html" label="Home" icon="ion-home, material:md-home" badge="7" active>
+        </ons-tab>
+        <ons-tab page="tab2.html" label="Diagnostics" icon="ion-ios-pulse" active-icon="ion-ios-pulse-strong">
+        </ons-tab>
+        <ons-tab page="tab3.html" label="Prescriptions" icon="ion-ios-heart-outline" active-icon="ion-ios-heart">
+        </ons-tab>
+    </ons-tabbar>
+</ons-page>
+
+
+<template id="tab1.html">
+    <ons-page id="Tab1">
+        <ons-row>
+            <ons-col>
+
+                <ons-card>
+                    <ons-if platform="ios other">
+                        <ons-fab position="top right" onclick="app.showFromObject()">
+                            <ons-icon icon="md-plus"></ons-icon>
+                        </ons-fab>
+                    </ons-if>
+                    <div class="title">Major Account</div>
+                    <ons-list-item class="list-item">
+                        <div class="left list-item__left">
+                            <img class="list-item__thumbnail" src="img/t-p-letter-logo-7CCF6D1222-seeklogo.com.png">
+                        </div>
+                        <ons-if platform="ios other">
+
+                        </ons-if>
+                        <div class="content">
+                            <ons-list modifier="noborder">
+                                <ons-list-item modifier="longdivider">Acho Tekuh David
+                                    <label class="right">
+                                        <ons-checkbox input-id="check-1" checked></ons-checkbox>
+                                    </label>
+                                    <ons-if platform="android">
+                                        <ons-button modifier="quiet">Details</ons-button>
+                                    </ons-if>
+                                    <ons-if platform="ios other">
+                                        <ons-button modifier="quiet">More</ons-button>
+                                    </ons-if>
+                                </ons-list-item>
+                            </ons-list>
+                        </div>
+                    </ons-list-item>
+                </ons-card>
+
+                <ons-card>
+                    <ons-button modifier="large--quiet" onclick="users()">
+                        <ons-icon icon="ion-plus-round" size="25px"></ons-icon>
+                        Add Account
+                    </ons-button>
+                </ons-card>
+
+                <ons-card>
+                    <div class="title">Notifications</div>
+                    <ons-list-item class="list-item">
+
+                    </ons-list-item>
+                </ons-card>
+
+                <ons-card>
+                    <div class="title">Feedback</div>
+                    <p>Tell Us How You Feel About The App !</p>
+                </ons-card>
+            </ons-col>
+        </ons-row>
+    </ons-page>
+</template>
+
+<template id="tab2.html">
+    <ons-page id="Tab2">
+
+
+        <ons-card>
+            <div class="title">December 28th 2017</div>
+            <ons-list>
+                <ons-list-item tappable modifier="nodivider">Hopital de Biyem Assi, Yaounde</ons-list-item>
+            </ons-list>
+        </ons-card>
+
+        <ons-card>
+            <div class="title">January 12th 2018</div>
+            <ons-list>
+                <ons-list-item tappable modifier="nodivider">Hopital Lakentini , Douala</ons-list-item>
+            </ons-list>
+        </ons-card>
+
+    </ons-page>
+</template>
+
+<template id="tab3.html">
+    <ons-page id="Tab3">
+        <ons-card>
+            <div class="title">December 28th 2017</div>
+            <ons-list>
+                <ons-list-item modifier="nodivider">Paracetamol(2M, 2A, 2E)</ons-list-item>
+                <ons-list-item modifier="nodivider">Quinine(1 spoon per day)</ons-list-item>
+                <ons-list-item modifier="nodivider">Ibuprofene(1M, 1A, 1E)</ons-list-item>
+            </ons-list>
+        </ons-card>
+
+        <ons-card>
+            <div class="title">January 12th 2018</div>
+            <ons-list>
+                <ons-list-item modifier="nodivider">Niflugel(apply morning and evening)</ons-list-item>
+                <ons-list-item modifier="nodivider">Pain balm</ons-list-item>
+                <ons-list-item modifier="nodivider">Cornetine (2 drops/eye morning and evening )</ons-list-item>
+            </ons-list>
+        </ons-card>
+    </ons-page>
+</template>
+
+<ons-if platform="android">
+    <ons-speed-dial position="bottom right" direction="up" id="speeddial">
+        <ons-fab>
+            <ons-icon icon="ion-plus-round" size="32px"></ons-icon>
+        </ons-fab>
+        <ons-speed-dial-item id="donateblood">
+            <ons-icon icon="ion-waterdrop" size="25px" style="color: red"></ons-icon>
+        </ons-speed-dial-item>
+        <ons-speed-dial-item id="authorize" onclick="autorize()">
+            <ons-icon icon="ion-eye" size="25px" style="color: green"></ons-icon>
+        </ons-speed-dial-item>
+        <ons-speed-dial-item id="addperson" onclick="users()">
+            <ons-icon icon="ion-person-add" size="25px" style="color: #00009d"></ons-icon>
+        </ons-speed-dial-item>
+    </ons-speed-dial>
+</ons-if>
+<ons-if platform="ios other">
+
+    <ons-action-sheet id="sheet" cancelable title="From template">
+        <ons-action-sheet-button icon="md-square-o" onclick="app.hideFromTemplate()">Label</ons-action-sheet-button>
+        <ons-action-sheet-button icon="md-square-o" onclick="app.hideFromTemplate()">Label</ons-action-sheet-button>
+        <ons-action-sheet-button icon="md-square-o" onclick="app.hideFromTemplate()" modifier="destructive">Label
+        </ons-action-sheet-button>
+        <ons-action-sheet-button icon="md-close" onclick="app.hideFromTemplate()">Cancel</ons-action-sheet-button>
+    </ons-action-sheet>
+
+</ons-if>
+</body>
+
+</ons-gesture-detector>
+<script>
+    var app = {};
+
+    var nodelistitems = document.querySelectorAll('ons-speed-dial-item');
+    let index = 0;
+    for (index = 0; index < nodelistitems.length; index++) {
+        nodelistitems[index].addEventListener('click', function () {
+            document.querySelector('ons-speed-dial').hideItems()
+        })
+    }
+
+    function autorize() {
+        ons.notification.prompt({message: 'Doctor Ralphen (ID:12345) is trying to access your medical records?'})
+            .then(function (name) {
+                ons.notification.toast({message: 'You Just granted access to Dr. Ralphen', timeout: 2000})
+            });
+    }
+
+    function users() {
+        location.href = '/users.html';
+    }
+
+
+    app.showFromObject = function () {
+        ons.openActionSheet({
+            title: 'Main Menu',
+            cancelable: true,
+            buttons: [
+                'Add New User',
+                'Authorize View',
+                {
+                    label: 'Blood Donation',
+                    modifier: 'destructive'
+                },
+                {
+                    label: 'Cancel',
+                    icon: 'md-close'
+                }
+            ]
+        }).then(function (index) {
+            console.log('index: ', index)
+        })
+    };
+
+
+</script>
+</html>
